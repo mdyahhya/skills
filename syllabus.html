@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syllabus — AI Masterclass · Dominal Tech</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #080808;
+            --bg2: #0e0e0e;
+            --surface: #111111;
+            --surface2: #161616;
+            --border: rgba(255, 255, 255, 0.07);
+            --border-bright: rgba(255, 255, 255, 0.13);
+            --white: #ffffff;
+            --white-dim: rgba(255, 255, 255, 0.52);
+            --white-faint: rgba(255, 255, 255, 0.2);
+            --accent: #e8ff47;
+            --accent2: #47ffb8;
+            --accent3: #ff6b35;
+            --font-d: 'Syne', sans-serif;
+            --font-b: 'DM Sans', sans-serif;
+
+            /* per-phase accent colors */
+            --c1: #e8ff47;
+            /* lime */
+            --c2: #47ffb8;
+            /* teal */
+            --c3: #ff6b35;
+            /* orange */
+            --c4: #a78bfa;
+            /* violet */
+            --c5: #38bdf8;
+            /* sky */
+            --c6: #f472b6;
+            /* pink */
+            --c7: #fb923c;
+            /* amber */
+            --c8: #4ade80;
+            /* green */
+            --c9: #e879f9;
+            /* fuchsia */
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--white);
+            font-family: var(--font-b);
+            font-weight: 300;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 48px;
+            background: rgba(8, 8, 8, 0.88);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-d);
+            font-weight: 700;
+            font-size: 15px;
+            letter-spacing: -0.02em;
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        .nav-logo-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent);
+            animation: blink-dot 2.2s ease infinite;
+        }
+
+        @keyframes blink-dot {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1)
+            }
+
+            50% {
+                opacity: .5;
+                transform: scale(.75)
+            }
+        }
+
+        .nav-sub {
+            font-size: 10px;
+            color: var(--white-faint);
+            font-weight: 400;
+            letter-spacing: .08em;
+            margin-top: 1px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-right a {
+            color: var(--white-dim);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color .2s;
+        }
+
+        .nav-right a:hover {
+            color: var(--white);
+        }
+
+        .nav-cta {
+            background: var(--accent);
+            color: #000;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            font-family: var(--font-d);
+            text-decoration: none;
+            letter-spacing: .01em;
+            transition: box-shadow .25s, transform .2s;
+        }
+
+        .nav-cta:hover {
+            box-shadow: 0 0 22px rgba(232, 255, 71, .4);
+            transform: translateY(-1px);
+        }
+
+        /* ── HERO HEADER ── */
+        #hero-header {
+            padding: 140px 48px 80px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .hh-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, .025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, .025) 1px, transparent 1px);
+            background-size: 52px 52px;
+            mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, black 20%, transparent 100%);
+        }
+
+        .hh-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            pointer-events: none;
+        }
+
+        .hh-orb-1 {
+            width: 500px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(232, 255, 71, .07) 0%, transparent 70%);
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .hh-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .hh-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 14px;
+            border: 1px solid var(--border-bright);
+            border-radius: 100px;
+            font-size: 11px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--white-dim);
+            background: rgba(255, 255, 255, .03);
+            margin-bottom: 28px;
+            animation: fade-up .7s ease both;
+        }
+
+        .hh-badge-dot {
+            width: 5px;
+            height: 5px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 6px var(--accent);
+        }
+
+        .hh-title {
+            font-family: var(--font-d);
+            font-size: clamp(36px, 5.5vw, 70px);
+            font-weight: 800;
+            letter-spacing: -.035em;
+            line-height: 1.0;
+            margin-bottom: 16px;
+            animation: fade-up .7s .1s ease both;
+        }
+
+        .hh-title em {
+            font-style: normal;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hh-sub {
+            font-size: 17px;
+            color: var(--white-dim);
+            font-weight: 300;
+            animation: fade-up .7s .2s ease both;
+        }
+
+        .hh-meta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            animation: fade-up .7s .3s ease both;
+        }
+
+        .hh-chip {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--white-dim);
+        }
+
+        .hh-chip svg {
+            width: 15px;
+            height: 15px;
+            opacity: .5;
+        }
+
+        @keyframes fade-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        /* ── PROGRESS BAR ── */
+        .progress-bar-wrap {
+            position: sticky;
+            top: 57px;
+            z-index: 90;
+            height: 3px;
+            background: rgba(255, 255, 255, .04);
+        }
+
+        #progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            transition: width .1s linear;
+        }
+
+        /* ── PHASE NAV ── */
+        #phase-nav {
+            position: sticky;
+            top: 60px;
+            z-index: 80;
+            background: rgba(8, 8, 8, .92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 48px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        #phase-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .pnav-inner {
+            display: flex;
+            gap: 0;
+            min-width: max-content;
+        }
+
+        .pnav-btn {
+            padding: 14px 18px;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: .04em;
+            color: var(--white-faint);
+            background: none;
+            border: none;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: color .2s, border-color .2s;
+            font-family: var(--font-b);
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .pnav-btn .pnav-num {
+            font-family: var(--font-d);
+            font-size: 10px;
+            font-weight: 700;
+            width: 18px;
+            height: 18px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, .06);
+            transition: background .2s;
+        }
+
+        .pnav-btn:hover {
+            color: var(--white);
+        }
+
+        .pnav-btn.active {
+            color: var(--white);
+        }
+
+        /* ── MAIN LAYOUT ── */
+        main {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 60px 48px 120px;
+        }
+
+        /* ── PHASE SECTION ── */
+        .phase {
+            margin-bottom: 16px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: border-color .3s;
+        }
+
+        .phase.open {
+            border-color: var(--border-bright);
+        }
+
+        .phase-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 28px 32px;
+            cursor: pointer;
+            background: var(--surface);
+            transition: background .25s;
+            user-select: none;
+        }
+
+        .phase-header:hover {
+            background: var(--surface2);
+        }
+
+        .phase.open .phase-header {
+            background: var(--surface2);
+        }
+
+        .phase-icon-wrap {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: box-shadow .3s;
+        }
+
+        .phase-icon-wrap svg {
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .phase.open .phase-icon-wrap {
+            box-shadow: 0 0 20px currentColor;
+        }
+
+        .phase-meta {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .phase-num {
+            font-size: 11px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+
+        .phase-title {
+            font-family: var(--font-d);
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: -.02em;
+        }
+
+        .phase-desc {
+            font-size: 13px;
+            color: var(--white-dim);
+            margin-top: 3px;
+        }
+
+        .phase-right {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-shrink: 0;
+        }
+
+        .phase-count {
+            font-size: 12px;
+            color: var(--white-faint);
+            background: rgba(255, 255, 255, .05);
+            padding: 4px 10px;
+            border-radius: 100px;
+        }
+
+        .phase-chevron {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform .35s cubic-bezier(.4, 0, .2, 1), background .2s;
+            flex-shrink: 0;
+        }
+
+        .phase-chevron svg {
+            width: 14px;
+            height: 14px;
+            stroke: var(--white-dim);
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .phase.open .phase-chevron {
+            transform: rotate(180deg);
+            background: rgba(255, 255, 255, .1);
+        }
+
+        /* ── PHASE BODY ── */
+        .phase-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .5s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        .phase.open .phase-body {
+            max-height: 4000px;
+        }
+
+        .phase-content {
+            padding: 0 32px 32px;
+            background: rgba(0, 0, 0, .3);
+            border-top: 1px solid var(--border);
+        }
+
+        /* Sub-groups inside a phase */
+        .topic-group {
+            padding-top: 28px;
+        }
+
+        .topic-group-label {
+            font-size: 11px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--white-faint);
+            font-weight: 500;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .topic-group-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .points-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 8px;
+        }
+
+        .point {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 14px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, .025);
+            border: 1px solid transparent;
+            transition: border-color .2s, background .2s;
+            cursor: default;
+        }
+
+        .point:hover {
+            background: rgba(255, 255, 255, .04);
+        }
+
+        .point-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            margin-top: 7px;
+            flex-shrink: 0;
+        }
+
+        .point-text {
+            font-size: 13.5px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, .75);
+            line-height: 1.5;
+        }
+
+        /* ── BOTTOM CTA ── */
+        #bottom-cta {
+            text-align: center;
+            padding: 80px 48px 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bcta-glow {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(ellipse, rgba(232, 255, 71, .06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .bcta-inner {
+            position: relative;
+            z-index: 2;
+        }
+
+        .bcta-label {
+            font-size: 12px;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .bcta-h {
+            font-family: var(--font-d);
+            font-size: clamp(28px, 4.5vw, 52px);
+            font-weight: 800;
+            letter-spacing: -.03em;
+            margin-bottom: 14px;
+        }
+
+        .bcta-h span {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .bcta-sub {
+            font-size: 16px;
+            color: var(--white-dim);
+            margin-bottom: 36px;
+        }
+
+        .btn-big {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--white);
+            color: #000;
+            padding: 15px 36px;
+            border-radius: 8px;
+            font-family: var(--font-d);
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: -.01em;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: box-shadow .3s, transform .2s, background .2s;
+        }
+
+        .btn-big:hover {
+            background: var(--accent);
+            box-shadow: 0 0 50px rgba(232, 255, 71, .4);
+            transform: translateY(-2px);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 28px 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .f-logo {
+            font-family: var(--font-d);
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .f-logo span {
+            color: var(--white-faint);
+            font-weight: 400;
+        }
+
+        .f-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .f-links a {
+            font-size: 13px;
+            color: var(--white-faint);
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        .f-links a:hover {
+            color: var(--white);
+        }
+
+        .f-copy {
+            font-size: 12px;
+            color: var(--white-faint);
+        }
+
+        /* ── REVEAL ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity .6s ease, transform .6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .rd1 {
+            transition-delay: .08s;
+        }
+
+        .rd2 {
+            transition-delay: .16s;
+        }
+
+        .rd3 {
+            transition-delay: .24s;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media(max-width:860px) {
+            nav {
+                padding: 14px 20px;
+            }
+
+            .nav-right .nav-links-hide {
+                display: none;
+            }
+
+            #hero-header {
+                padding: 110px 20px 60px;
+            }
+
+            #phase-nav {
+                padding: 0 20px;
+            }
+
+            main {
+                padding: 40px 20px 80px;
+            }
+
+            .phase-header {
+                padding: 20px;
+                gap: 14px;
+            }
+
+            .phase-content {
+                padding: 0 20px 24px;
+            }
+
+            .points-grid {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                padding: 24px 20px;
+            }
+
+            #bottom-cta {
+                padding: 60px 20px 80px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="index.html" class="nav-logo">
+            <div class="nav-logo-dot"></div>
+            <div>
+                AI Masterclass
+                <div class="nav-sub">by Dominal Tech · skills.dominal.in</div>
+            </div>
+        </a>
+        <div class="nav-right">
+            <a href="index.html" class="nav-links-hide">← Home</a>
+            <a href="index.html#tools" class="nav-links-hide">Projects</a>
+            <a href="index.html#cta" class="nav-cta">Join the Course →</a>
+        </div>
+    </nav>
+
+    <!-- PROGRESS BAR -->
+    <div class="progress-bar-wrap">
+        <div id="progress-bar"></div>
+    </div>
+
+    <!-- HERO HEADER -->
+    <section id="hero-header">
+        <div class="hh-grid"></div>
+        <div class="hh-orb hh-orb-1"></div>
+        <div class="hh-inner">
+            <div class="hh-badge">
+                <div class="hh-badge-dot"></div>Full Course Roadmap
+            </div>
+            <h1 class="hh-title">Complete Course<br><em>Syllabus</em></h1>
+            <p class="hh-sub">From Beginner to Building Real AI Products</p>
+            <div class="hh-meta">
+                <div class="hh-chip">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                        <path d="M3 9h18M9 21V9" />
+                    </svg>
+                    9 Phases
+                </div>
+                <div class="hh-chip">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 6v6l4 2" />
+                    </svg>
+                    Self-paced
+                </div>
+                <div class="hh-chip">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                    </svg>
+                    Build-first approach
+                </div>
+                <div class="hh-chip">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                    Lifetime access
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHASE NAV -->
+    <div id="phase-nav">
+        <div class="pnav-inner" id="pnav-inner"></div>
+    </div>
+
+    <!-- MAIN -->
+    <main id="main-content">
+        <div id="phases-container"></div>
+    </main>
+
+    <!-- BOTTOM CTA -->
+    <section id="bottom-cta">
+        <div class="bcta-glow"></div>
+        <div class="bcta-inner">
+            <div class="bcta-label reveal">9 Phases · 100% Practical</div>
+            <h2 class="bcta-h reveal">Ready to Start <span>Building?</span></h2>
+            <p class="bcta-sub reveal">Everything in this syllabus comes with real projects, real code, real shipping.
+            </p>
+            <a href="index.html#cta" class="btn-big reveal">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polygon points="5 3 19 12 5 21 5 3" />
+                </svg>
+                Join the Course
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="f-logo">AI Masterclass <span>by Dominal Tech</span></div>
+        <div class="f-links">
+            <a href="index.html">Home</a>
+            <a href="#">Pricing</a>
+            <a href="https://dominal.in">dominal.in</a>
+        </div>
+        <div class="f-copy">© 2025 Dominal Tech Pvt Ltd</div>
+    </footer>
+
+    <script>
+        /* ══════════════════════════════════════════
+           SYLLABUS DATA
+        ══════════════════════════════════════════ */
+        const phases = [
+            {
+                num: "01", id: "foundation",
+                title: "Foundation",
+                subtitle: "Basics of AI Apps",
+                desc: "Understand how AI applications actually work before writing a single line.",
+                color: "#e8ff47",
+                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`,
+                groups: [
+                    {
+                        label: "How AI Works",
+                        points: [
+                            "How AI apps work — user → app → API → response",
+                            "Why AI has no memory and how to handle it",
+                            "How to send prompts and get responses",
+                            "Basic prompt writing and controlling output",
+                            "Using system instructions to guide AI behavior",
+                            "Understanding input → output flow",
+                        ]
+                    },
+                    {
+                        label: "Prompts & Output",
+                        points: [
+                            "Formatting AI responses (clean text, bullets)",
+                            "Using chat history to simulate memory",
+                            "Basic idea of adding hidden context",
+                            "Creating simple AI workflows",
+                            "Using prompt templates",
+                            "Dynamic prompts using user input",
+                            "Controlling response length (short/long)",
+                        ]
+                    },
+                    {
+                        label: "AI Personalities & UI",
+                        points: [
+                            "Using multiple languages (English, Hindi, Hinglish)",
+                            "Making AI behave like a teacher, assistant, etc.",
+                            "Building a basic chatbot interface",
+                            "UI basics: message bubbles, typing animation, auto scroll",
+                            "Showing loading states",
+                            "Adding example prompts for users",
+                        ]
+                    }
+                ]
+            },
+            {
+                num: "02", id: "control",
+                title: "Control & Interaction",
+                subtitle: "Advanced Conversation Management",
+                desc: "Take full control over what AI says, how it says it, and how users interact with it.",
+                color: "#47ffb8",
+                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07M8.46 8.46a5 5 0 0 0 0 7.07"/></svg>`,
+                groups: [
+                    {
+                        label: "Conversation Control",
+                        points: [
+                            "Managing multi-turn conversations",
+                            "Setting rules for AI behavior",
+                            "Creating structured outputs (JSON, formatted data)",
+                            "Improving AI responses automatically",
+                            "Cleaning user input before sending",
+                            "Cleaning AI output before showing",
+                            "Validating user input",
+                            "Advanced control of response size",
+                        ]
+                    },
+                    {
+                        label: "UX Features",
+                        points: [
+                            "Generating multiple answer options",
+                            "Regenerate response feature",
+                            "Editing and deleting messages",
+                            "Copy response functionality",
+                            "Suggested prompts for users",
+                            "One-click actions (summarize, explain)",
+                            "Predefined modes (study mode, resume mode)",
+                            "Auto prompt suggestions",
+                        ]
+                    },
+                    {
+                        label: "Error Handling",
+                        points: [
+                            "Handling errors with fallback responses",
+                            "Filtering AI responses",
+                            "Handling uncertain AI answers",
+                        ]
+                    }
+                ]
+            },
+            {
+                num: "03", id: "systems",
+                title: "Real AI Systems",
+                subtitle: "Building Complex Workflows",
+                desc: "Break beyond simple chatbots — build full AI systems that think, decide, and act.",
+                color: "#ff6b35",
+                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`,
+                groups: [
+                    {
+                        label: "AI Orchestration",
+                        points: [
+                            "Breaking complex problems into steps",
+                            "Chaining multiple AI calls",
+                            "Creating multi-step workflows",
+                            "AI-based decision making",
+                            "Advanced context handling",
+                        ]
+                    },
+                    {
+                        label: "Data & Memory",
+                        points: [
+                            "Connecting AI with databases",
+                            "Saving and reusing responses",
+                            "Session-based memory",
+                            "Personalizing AI for individual users",
+                        ]
+                    },
+                    {
+                        label: "Multi-modal & Automation",
+                        points: [
+                            "Handling text, files, and voice together",
+                            "File uploads (PDF, images)",
+                            "Drag-and-drop UI",
+                            "Voice input and speech output",
+                            "Combining multiple APIs",
+                            "Using search before AI response",
+                            "Triggering actions (email, save data)",
+                            "Automating workflows",
+                            "Integrating AI into web apps",
+                        ]
+                    }
+                ]
+            },
+            {
+                num: "04", id: "rag",
+                title: "Custom Data & RAG",
+                subtitle: "Most Important Module",
+                desc: "Teach AI your own knowledge. Build 'chat with your data' systems from scratch.",
+                color: "#a78bfa",
+                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>`,
+                groups: [
+                    {
+                        label: "RAG Core Concepts",
+                        points: [
+                            "Adding your own data to AI",
+                            "Building 'chat with your data' systems",
+                            "Searching data before answering",
+                            "Combining search + AI for accuracy",
+                            "Managing large data inputs",
+                            "Handling context size limits",
+                        ]
+                    },
+                    {
+                        label: "Accuracy & Reliability",
+                        points: [
+                            "Making AI answers more reliable",
+                            "Avoiding wrong or fake answers (hallucinations)",
+                            "Building knowledge-based bots",
+                        ]
+                    },
+                    {
+                        label: "Real-World Applications",
+                        points: [
+                            "AI tools for PDFs and notes",
+                            "Study assistant systems",
+                            "Customer support bots",
+                            "Internal business tools",
+                            "Real-world use cases of custom AI",
+                        ]
+                    }
+                ]
+            },
+            {
+                num: "05", id: "ux",
+                title: "UI / UX Design",
+                subtitle: "Make It Look Professional",
+                desc: "Your AI product is only as good as how it feels. Make it beautiful and usable.",
+                color: "#38bdf8",
+                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>`,
+                groups: [
+                    {
+                        label: "Chat UX Features",
+                        points: [
+                            "Message timestamps",
+                            "Chat history sidebar",
+                            "Pin important chats",
+                            "Save chats as PDF",
+                            "Share conversations",
+                            "Retry buttons and loading animations",
+                        ]
+                    },
+                    {
+                        label: "Text & Formatting",
+                        points: [
+                            "Proper text formatting (bold, lists, code)",
+                            "Code blocks with copy button",
+                            "Highlight key information",
+                            "Improving readability",
+                            "Smooth transitions and animations",
+                        ]
+                    },
+                    {
+                        label: "Layout & Theming",
+                        points: [
+                            "Dark / light mode toggle",
+                            "Language toggle UI",
+                            "Response size toggle",
+                            "Chat categories",
+                            "AI branding / avatar",
+                            "Clean layout design",
+                            "Mobile-friendly design",
+                            "Empty screen UI (onboarding)",
+                        ]
+                    }
+                ]
+            },
+            {
+                num: "06", id: "security",
+                title: "Security, Cost & Performance",
+                subtitle: "Build for Production",
+                desc: "Keep your API keys safe, your costs low, and your app blazing fast.",
+                color: "#f472b6",
+                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+                groups: [
+                    {
+                        label: "Security Basics",
+                        points: [
+                            "Keeping API keys secure",
+                            "Using backend for API calls",
+                            "Environment variables best practices",
+                            "Setting usage limits per user",
+                            "Managing multiple API keys",
+                        ]
+                    },
+                    {
+                        label: "Cost Management",
+                        points: [
+                            "Controlling token usage",
+                            "Limiting user requests (rate limiting)",
+                            "Caching responses to save costs",
+                            "Using cost-efficient models",
+                            "Tracking API usage and spending",
+                        ]
+                    },
+                    {
+                        label: "Performance",
+                        points: [
+                            "Optimizing chat history size",
+                            "Reducing unnecessary data sent to API",
+                            "Faster responses with streaming",
+                            "General performance optimization",
+                            "Balancing speed vs accuracy",
+                        ]
+                    }
+                ]
+            },
+            {
+                num: "07", id: "reliability",
+                title: "Reliability & Testing",
+                subtitle: "Build Systems That Don't Break",
+                desc: "Great products handle failure gracefully. Learn to build AI apps that stay stable.",
+                color: "#fb923c",
+                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9S3 16.97 3 12 7.03 3 12 3s9 4.03 9 9z"/></svg>`,
+                groups: [
+                    {
+                        label: "Error Handling",
+                        points: [
+                            "Handling API errors gracefully",
+                            "Retry mechanisms for failed calls",
+                            "Timeout handling",
+                            "Logging requests for debugging",
+                        ]
+                    },
+                    {
+                        label: "Monitoring & Feedback",
+                        points: [
+                            "Tracking issues in production",
+                            "Monitoring user behavior",
+                            "Collecting user feedback",
+                            "Content moderation",
+                        ]
+                    },
+                    {
+                        label: "Testing",
+                        points: [
+                            "Testing different user inputs",
+                            "Handling edge cases",
+                            "Improving based on failures",
+                            "Building stable, predictable systems",
+                        ]
+                    }
+                ]
+            },
+            {
+                num: "08", id: "career",
+                title: "Career & Product Thinking",
+                subtitle: "From Builder to Creator",
+                desc: "Think like a product builder. Turn your AI skills into real opportunities.",
+                color: "#4ade80",
+                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>`,
+                groups: [
+                    {
+                        label: "Product Mindset",
+                        points: [
+                            "Solving real-world problems with AI",
+                            "Building minimum viable products (MVP)",
+                            "Avoiding overbuilding",
+                            "Fast iteration: build → test → improve",
+                            "Focus on user experience, not just tech",
+                        ]
+                    },
+                    {
+                        label: "Portfolio & Projects",
+                        points: [
+                            "Building multiple real projects",
+                            "Explaining your projects clearly to others",
+                            "Working with real data",
+                            "Startup thinking — turning ideas into products",
+                        ]
+                    },
+                    {
+                        label: "AI for India",
+                        points: [
+                            "AI for business use cases",
+                            "AI for Indian users and local languages",
+                            "AI for local businesses and startups",
+                        ]
+                    }
+                ]
+            },
+            {
+                num: "09", id: "advanced",
+                title: "Advanced",
+                subtitle: "Optional — For Power Builders",
+                desc: "Go further with agents, tool calling, and scalable AI systems.",
+                color: "#e879f9",
+                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
+                groups: [
+                    {
+                        label: "Advanced Capabilities",
+                        points: [
+                            "AI agents that take actions autonomously",
+                            "Tool / function calling",
+                            "Advanced memory systems",
+                            "Example-based (few-shot) learning",
+                            "Advanced multi-step workflows",
+                            "Scaling AI systems for more users",
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        /* ══════════════════════════════════════════
+           BUILD DOM
+        ══════════════════════════════════════════ */
+        const pnavInner = document.getElementById('pnav-inner');
+        const container = document.getElementById('phases-container');
+
+        phases.forEach((phase, idx) => {
+            /* phase nav button */
+            const btn = document.createElement('button');
+            btn.className = 'pnav-btn';
+            btn.dataset.idx = idx;
+            btn.innerHTML = `<span class="pnav-num">${phase.num}</span>${phase.title}`;
+            btn.style.setProperty('--ph-c', phase.color);
+            pnavInner.appendChild(btn);
+
+            /* phase accordion */
+            const section = document.createElement('div');
+            section.className = 'phase reveal';
+            section.id = `phase-${phase.id}`;
+            section.dataset.idx = idx;
+
+            const totalPoints = phase.groups.reduce((s, g) => s + g.points.length, 0);
+
+            section.innerHTML = `
+    <div class="phase-header">
+      <div class="phase-icon-wrap" style="background:${phase.color}18; color:${phase.color}">
+        ${phase.icon}
+      </div>
+      <div class="phase-meta">
+        <div class="phase-num" style="color:${phase.color}">Phase ${phase.num} — ${phase.subtitle}</div>
+        <div class="phase-title">${phase.title}</div>
+        <div class="phase-desc">${phase.desc}</div>
+      </div>
+      <div class="phase-right">
+        <div class="phase-count">${totalPoints} topics</div>
+        <div class="phase-chevron">
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="phase-body">
+      <div class="phase-content">
+        ${phase.groups.map(g => `
+          <div class="topic-group">
+            <div class="topic-group-label">${g.label}</div>
+            <div class="points-grid">
+              ${g.points.map(p => `
+                <div class="point">
+                  <div class="point-dot" style="background:${phase.color}"></div>
+                  <div class="point-text">${p}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+
+            container.appendChild(section);
+        });
+
+        /* ══════════════════════════════════════════
+           ACCORDION LOGIC
+        ══════════════════════════════════════════ */
+        function openPhase(idx) {
+            document.querySelectorAll('.phase').forEach((el, i) => {
+                el.classList.toggle('open', i === idx);
+            });
+            document.querySelectorAll('.pnav-btn').forEach((btn, i) => {
+                btn.classList.toggle('active', i === idx);
+                if (i === idx) {
+                    btn.style.color = phases[i].color;
+                    btn.style.borderBottomColor = phases[i].color;
+                    btn.querySelector('.pnav-num').style.background = phases[i].color + '22';
+                } else {
+                    btn.style.color = '';
+                    btn.style.borderBottomColor = '';
+                    btn.querySelector('.pnav-num').style.background = '';
+                }
+            });
+        }
+
+        // click on header
+        document.querySelectorAll('.phase-header').forEach((header, idx) => {
+            header.addEventListener('click', () => {
+                const phase = header.closest('.phase');
+                const isOpen = phase.classList.contains('open');
+                if (isOpen) {
+                    phase.classList.remove('open');
+                    document.querySelectorAll('.pnav-btn')[idx].classList.remove('active');
+                    document.querySelectorAll('.pnav-btn')[idx].style.color = '';
+                    document.querySelectorAll('.pnav-btn')[idx].style.borderBottomColor = '';
+                } else {
+                    openPhase(idx);
+                    setTimeout(() => {
+                        phase.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 50);
+                }
+            });
+        });
+
+        // phase nav buttons
+        document.querySelectorAll('.pnav-btn').forEach((btn, idx) => {
+            btn.addEventListener('click', () => {
+                openPhase(idx);
+                const target = document.querySelectorAll('.phase')[idx];
+                setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+            });
+        });
+
+        // open first by default
+        openPhase(0);
+
+        /* ══════════════════════════════════════════
+           PROGRESS BAR
+        ══════════════════════════════════════════ */
+        window.addEventListener('scroll', () => {
+            const docH = document.documentElement.scrollHeight - window.innerHeight;
+            const pct = (window.scrollY / docH) * 100;
+            document.getElementById('progress-bar').style.width = pct + '%';
+        });
+
+        /* ══════════════════════════════════════════
+           SCROLL REVEAL
+        ══════════════════════════════════════════ */
+        const revObs = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); }
+            });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+        /* ══════════════════════════════════════════
+           ACTIVE PHASE NAV ON SCROLL
+        ══════════════════════════════════════════ */
+        const phaseEls = document.querySelectorAll('.phase');
+        const scrollObs = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    const idx = parseInt(e.target.dataset.idx);
+                    document.querySelectorAll('.pnav-btn').forEach((b, i) => {
+                        if (i === idx && e.target.classList.contains('open')) {
+                            b.classList.add('active');
+                            b.style.color = phases[i].color;
+                            b.style.borderBottomColor = phases[i].color;
+                            // scroll nav to show active
+                            b.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+        phaseEls.forEach(el => scrollObs.observe(el));
+    </script>
+</body>
+
+</html>
