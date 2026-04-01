@@ -1,983 +1,1279 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Syllabus — AI Masterclass · Dominal Tech</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..900&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            /* Text Sizes from index */
-            --text-xs:   clamp(0.75rem,  0.7rem  + 0.25vw, 0.875rem);
-            --text-sm:   clamp(0.875rem, 0.8rem  + 0.35vw, 1rem);
-            --text-base: clamp(1rem,     0.95rem + 0.25vw, 1.125rem);
-            --text-lg:   clamp(1.125rem, 1rem    + 0.75vw, 1.5rem);
-            --text-xl:   clamp(1.5rem,   1.2rem  + 1.25vw, 2.25rem);
-            --text-2xl:  clamp(2rem,     1.2rem  + 2.5vw,  3.5rem);
-            --text-3xl:  clamp(2.5rem,   1rem    + 4vw,    5rem);
-            --text-hero: clamp(3rem,     0.5rem  + 7vw,    7.5rem);
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Syllabus — AI Masterclass by Dominal Tech</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..900&family=Geist+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ─── TOKENS (matching homepage) ─────────────────────────────────── */
+    :root {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+      --text-3xl: clamp(2.5rem, 1rem + 4vw, 5rem);
 
-            /* Spacing from index */
-            --space-1:  0.25rem; --space-2:  0.5rem;  --space-3:  0.75rem;
-            --space-4:  1rem;    --space-5:  1.25rem; --space-6:  1.5rem;
-            --space-8:  2rem;    --space-10: 2.5rem;  --space-12: 3rem;
-            --space-16: 4rem;    --space-20: 5rem;    --space-24: 6rem;
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      --space-24: 6rem;
 
-            /* Radius from index */
-            --radius-sm: 0.375rem; --radius-md: 0.5rem; --radius-lg: 0.75rem;
-            --radius-xl: 1rem;     --radius-2xl: 1.5rem; --radius-full: 9999px;
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --radius-2xl: 1.5rem;
+      --radius-full: 9999px;
 
-            /* Fonts */
-            --font-body: 'Geist', 'Inter', sans-serif;
-            --font-mono: 'Geist Mono', monospace;
+      --font-body: 'Geist', 'Inter', sans-serif;
+      --font-mono: 'Geist Mono', monospace;
 
-            /* Colors (Synced with Index) */
-            --color-bg: #0a0a0a;
-            --color-surface: #111111;
-            --color-surface-2: #161616;
-            --color-border: rgba(255, 255, 255, 0.07);
-            --color-border-med: rgba(255, 255, 255, 0.12);
-            --color-text: #f0f0f0;
-            --color-text-muted: #888888;
-            --color-text-faint: #444444;
+      --color-bg: #0a0a0a;
+      --color-surface: #111111;
+      --color-surface-2: #161616;
+      --color-border: rgba(255, 255, 255, 0.07);
+      --color-border-med: rgba(255, 255, 255, 0.12);
+      --color-border-hi: rgba(255, 255, 255, 0.18);
 
-            /* Accent (Yellow Theme for Syllabus2) */
-            --accent: #e8ff47;
-            --accent-glow: rgba(232, 255, 71, 0.25);
-            --accent-2: #47ffb8;
-            --accent-2-glow: rgba(71, 255, 184, 0.18);
-            
-            /* Legacy mappings for syllabus logic */
-            --bg: var(--color-bg);
-            --bg2: var(--color-surface);
-            --surface: var(--color-surface);
-            --surface2: var(--color-surface-2);
-            --border: var(--color-border);
-            --border-bright: var(--color-border-med);
-            --white: var(--color-text);
-            --white-dim: var(--color-text-muted);
-            --white-faint: var(--color-text-faint);
+      --color-text: #f0f0f0;
+      --color-text-muted: #888888;
+      --color-text-faint: #444444;
 
-            /* per-phase accent colors */
-            --c1: #e8ff47; --c2: #47ffb8; --c3: #ff6b35;
-            --c4: #a78bfa; --c5: #38bdf8; --c6: #f472b6;
-            --c7: #fb923c; --c8: #4ade80; --c9: #e879f9;
-        }
+      --color-accent: #7c6ef5;
+      --color-accent-glow: rgba(124, 110, 245, 0.25);
+      --color-accent-2: #4fd4c8;
+      --color-accent-2-glow: rgba(79, 212, 200, 0.18);
 
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-        body {
-            background: var(--color-bg);
-            color: var(--color-text);
-            font-family: var(--font-body);
-            font-size: var(--text-base);
-            font-weight: 400;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
+      --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-mid: 280ms cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-slow: 500ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
 
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: var(--color-bg); }
-        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 2px; }
+    /* ─── BASE ────────────────────────────────────────────────────────── */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        /* ── NAV ── */
-        nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: var(--space-4) clamp(var(--space-4), 5vw, var(--space-12));
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--color-border);
-            transition: background 280ms cubic-bezier(0.16,1,0.3,1);
-        }
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      scroll-padding-top: 5rem;
+    }
 
-        .nav-logo {
-            display: flex; align-items: center; gap: var(--space-3);
-            font-weight: 600; font-size: var(--text-sm);
-            letter-spacing: -0.01em; text-decoration: none; color: var(--color-text);
-        }
+    body {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: var(--color-text);
+      background: var(--color-bg);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
 
-        .nav-logo-dot {
-            width: 7px; height: 7px; background: var(--accent);
-            border-radius: 50%; box-shadow: 0 0 10px var(--accent-glow);
-            animation: blink-dot 2.2s ease infinite;
-        }
+    img,
+    svg {
+      display: block;
+      max-width: 100%;
+    }
 
-        @keyframes blink-dot {
-            0%, 100% { opacity: 1; transform: scale(1) }
-            50% { opacity: .5; transform: scale(.75) }
-        }
+    ul {
+      list-style: none;
+    }
 
-        .nav-sub {
-            font-size: 10px; color: var(--color-text-faint);
-            font-weight: 400; letter-spacing: .04em; margin-top: 1px;
-        }
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+      font: inherit;
+      color: inherit;
+    }
 
-        .nav-right { display: flex; align-items: center; gap: var(--space-8); }
-        .nav-right a { color: var(--color-text-muted); text-decoration: none; font-size: var(--text-sm); transition: color .2s; }
-        .nav-right a:hover { color: var(--color-text); }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-        .nav-cta {
-            background: var(--accent); color: #000;
-            padding: var(--space-2) var(--space-5);
-            border-radius: var(--radius-full);
-            font-size: var(--text-sm); font-weight: 600;
-            text-decoration: none; letter-spacing: .01em;
-            transition: box-shadow .25s, transform .2s, background .2s;
-        }
+    h1,
+    h2,
+    h3,
+    h4 {
+      line-height: 1.15;
+      text-wrap: balance;
+      font-weight: 600;
+    }
 
-        .nav-cta:hover {
-            box-shadow: 0 0 30px var(--accent-glow);
-            transform: translateY(-1px);
-        }
+    p {
+      text-wrap: pretty;
+    }
 
-        /* ── HERO HEADER ── */
-        #hero-header {
-            padding: clamp(var(--space-24), 15vw, 140px) clamp(var(--space-4), 5vw, var(--space-12)) var(--space-16);
-            position: relative; overflow: hidden; text-align: center;
-        }
+    ::selection {
+      background: rgba(124, 110, 245, 0.3);
+    }
 
-        .hh-grid {
-            position: absolute; inset: 0;
-            background-image:
-                linear-gradient(rgba(255, 255, 255, .02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, .02) 1px, transparent 1px);
-            background-size: 52px 52px;
-            mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, black 20%, transparent 100%);
-        }
+    :focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 3px;
+      border-radius: var(--radius-sm);
+    }
 
-        .hh-orb { position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none; }
-        .hh-orb-1 {
-            width: 500px; height: 300px;
-            background: radial-gradient(circle, rgba(232, 255, 71, .1) 0%, transparent 70%);
-            top: -60px; left: 50%; transform: translateX(-50%);
-        }
+    @media(prefers-reduced-motion:reduce) {
 
-        .hh-inner { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; }
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
 
-        .hh-badge {
-            display: inline-flex; align-items: center; gap: var(--space-2);
-            padding: var(--space-1) var(--space-4);
-            border: 1px solid rgba(232, 255, 71, 0.3);
-            border-radius: var(--radius-full);
-            font-size: var(--text-xs); letter-spacing: .08em; text-transform: uppercase;
-            color: var(--accent); background: rgba(232, 255, 71, .06);
-            margin-bottom: var(--space-8);
-            animation: fade-up .7s ease both;
-        }
+    /* ─── LAYOUT ──────────────────────────────────────────────────────── */
+    .container {
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: clamp(var(--space-4), 5vw, var(--space-12));
+    }
 
-        .hh-badge-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 8px var(--accent); }
+    .container--mid {
+      max-width: 900px;
+      margin-inline: auto;
+      padding-inline: clamp(var(--space-4), 5vw, var(--space-12));
+    }
 
-        .hh-title {
-            font-size: var(--text-2xl); font-weight: 700;
-            letter-spacing: -.03em; line-height: 1.1; margin-bottom: var(--space-5);
-            animation: fade-up .7s .1s ease both;
-        }
+    /* ─── NAV ─────────────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: var(--space-4) clamp(var(--space-4), 5vw, var(--space-12));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--color-border);
+      transition: background var(--transition-mid);
+    }
 
-        .hh-title em {
-            font-style: normal;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-        }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
 
-        .hh-sub { font-size: var(--text-lg); color: var(--color-text-muted); font-weight: 400; animation: fade-up .7s .2s ease both; }
+    .nav-logo-badge {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      padding: 2px var(--space-2);
+      border: 1px solid rgba(124, 110, 245, 0.35);
+      border-radius: var(--radius-full);
+    }
 
-        .hh-meta {
-            display: flex; align-items: center; justify-content: center;
-            gap: var(--space-8); margin-top: var(--space-10); flex-wrap: wrap;
-            animation: fade-up .7s .3s ease both;
-        }
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      padding: var(--space-2) var(--space-4);
+      border: 1px solid var(--color-border-med);
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.03);
+      transition: color var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+    }
 
-        .hh-chip { display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-sm); color: var(--color-text-muted); }
-        .hh-chip svg { width: 14px; height: 14px; color: var(--accent); }
+    .nav-back:hover {
+      color: var(--color-text);
+      border-color: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.06);
+    }
 
-        @keyframes fade-up { from { opacity: 0; transform: translateY(20px) } to { opacity: 1; transform: translateY(0) } }
+    .nav-cta {
+      font-size: var(--text-sm);
+      font-weight: 500;
+      padding: var(--space-2) var(--space-5);
+      background: var(--color-accent);
+      color: #fff;
+      border-radius: var(--radius-full);
+      transition: background var(--transition-fast), box-shadow var(--transition-fast);
+    }
 
-        /* ── PROGRESS BAR ── */
-        .progress-bar-wrap { position: sticky; top: 0; z-index: 200; height: 2px; background: rgba(255, 255, 255, .05); }
-        #progress-bar { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transition: width .1s linear; }
+    .nav-cta:hover {
+      background: #6b5de0;
+      box-shadow: 0 0 24px var(--color-accent-glow);
+    }
 
-        /* ── PHASE NAV ── */
-        #phase-nav {
-            position: sticky; top: 60px; z-index: 80;
-            background: rgba(10, 10, 10, .92); backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--color-border);
-            padding: 0 clamp(var(--space-4), 5vw, var(--space-12));
-            overflow-x: auto; scrollbar-width: none;
-        }
+    /* ─── HERO HEADER ─────────────────────────────────────────────────── */
+    .page-hero {
+      padding-top: clamp(7rem, 12vw, 10rem);
+      padding-bottom: clamp(var(--space-12), 6vw, var(--space-20));
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
 
-        #phase-nav::-webkit-scrollbar { display: none; }
-        .pnav-inner { display: flex; gap: 0; min-width: max-content; }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(124, 110, 245, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
 
-        .pnav-btn {
-            padding: var(--space-4) var(--space-5);
-            font-size: var(--text-xs); font-weight: 500; letter-spacing: .04em;
-            color: var(--color-text-faint); background: none; border: none; cursor: pointer;
-            border-bottom: 2px solid transparent; transition: all .2s;
-            font-family: var(--font-body); white-space: nowrap;
-            display: flex; align-items: center; gap: var(--space-2);
-        }
+    .page-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-xs);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      border: 1px solid rgba(124, 110, 245, 0.3);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-full);
+      margin-bottom: var(--space-6);
+      background: rgba(124, 110, 245, 0.06);
+      animation: fadeDown 0.7s both;
+    }
 
-        .pnav-btn .pnav-num {
-            font-family: var(--font-mono); font-size: 10px; font-weight: 600;
-            width: 18px; height: 18px; border-radius: 4px;
-            display: flex; align-items: center; justify-content: center;
-            background: rgba(255, 255, 255, .06); transition: background .2s;
-        }
+    .page-hero h1 {
+      font-size: var(--text-3xl);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      margin-bottom: var(--space-5);
+      animation: fadeDown 0.7s 0.1s both;
+    }
 
-        .pnav-btn:hover { color: var(--color-text); }
-        .pnav-btn.active { color: var(--color-text); border-bottom-color: var(--accent); }
+    .page-hero p {
+      font-size: var(--text-lg);
+      color: var(--color-text-muted);
+      max-width: 520px;
+      margin: 0 auto var(--space-10);
+      line-height: 1.6;
+      animation: fadeDown 0.7s 0.2s both;
+    }
 
-        /* ── MAIN LAYOUT ── */
-        main {
-            max-width: 1000px; margin: 0 auto;
-            padding: var(--space-12) clamp(var(--space-4), 5vw, var(--space-12)) var(--space-24);
-        }
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-8);
+      flex-wrap: wrap;
+      animation: fadeDown 0.7s 0.3s both;
+    }
 
-        /* ── PHASE SECTION ── */
-        .phase {
-            margin-bottom: var(--space-4);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-2xl);
-            overflow: hidden; transition: border-color .3s;
-            background: var(--color-surface);
-        }
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
 
-        .phase.open { border-color: var(--color-border-med); box-shadow: 0 10px 40px rgba(0,0,0,0.4); }
+    .hero-meta-item svg {
+      color: var(--color-accent);
+    }
 
-        .phase-header {
-            display: flex; align-items: center; gap: var(--space-5);
-            padding: var(--space-6) var(--space-8);
-            cursor: pointer; background: var(--color-surface);
-            transition: background .25s; user-select: none;
-        }
+    /* ─── PROGRESS BAR ────────────────────────────────────────────────── */
+    .reading-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 200;
+      height: 2px;
+      background: linear-gradient(90deg, var(--color-accent), var(--color-accent-2));
+      width: 0%;
+      transition: width 0.1s linear;
+    }
 
-        .phase-header:hover { background: var(--color-surface-2); }
-        .phase.open .phase-header { background: var(--color-surface-2); }
+    /* ─── TOC SIDEBAR ─────────────────────────────────────────────────── */
+    /* NEW */
+    .page-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: var(--space-10);
+      align-items: start;
+      padding-top: var(--space-8);
+      padding-bottom: var(--space-24);
+    }
 
-        .phase-icon-wrap {
-            width: 46px; height: 46px; border-radius: var(--radius-lg);
-            display: flex; align-items: center; justify-content: center;
-            flex-shrink: 0; transition: box-shadow .3s;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
+    @media(max-width:1024px) {
+      .page-layout {
+        grid-template-columns: 1fr;
+      }
+    }
 
-        .phase-icon-wrap svg { width: 20px; height: 20px; stroke-width: 1.8; }
-        .phase.open .phase-icon-wrap { box-shadow: 0 0 20px rgba(255,255,255,0.05); }
+    @media(max-width:1024px) {
+      .page-layout {
+        grid-template-columns: 1fr;
+      }
+    }
 
-        .phase-meta { flex: 1; min-width: 0; }
-        .phase-num { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 2px; font-weight: 500; }
-        .phase-title { font-size: var(--text-base); font-weight: 600; letter-spacing: -.01em; }
-        .phase-desc { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: 2px; }
+    /* NEW */
+    .toc {
+      position: sticky;
+      top: 6rem;
+      padding: var(--space-5);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-2xl);
+      background: var(--color-surface);
+      max-height: calc(100vh - 8rem);
+      overflow-y: auto;
+      scrollbar-width: none;
+    }
 
-        .phase-right { display: flex; align-items: center; gap: var(--space-4); flex-shrink: 0; }
+    .toc::-webkit-scrollbar {
+      display: none;
+    }
 
-        .phase-count {
-            font-size: 11px; color: var(--color-text-faint); font-family: var(--font-mono);
-            background: rgba(255, 255, 255, .05); padding: 2px 8px; border-radius: var(--radius-full);
-        }
+    @media(max-width:1024px) {
+      .toc {
+        display: none;
+      }
+    }
 
-        .phase-chevron {
-            width: 24px; height: 24px; border-radius: 50%;
-            background: rgba(255, 255, 255, .05);
-            display: flex; align-items: center; justify-content: center;
-            transition: transform .3s; flex-shrink: 0;
-        }
+    .toc-title {
+      font-size: var(--text-xs);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-faint);
+      margin-bottom: var(--space-4);
+    }
 
-        .phase-chevron svg { width: 12px; height: 12px; stroke: var(--color-text-faint); stroke-width: 2.5; fill: none; }
-        .phase.open .phase-chevron { transform: rotate(180deg); background: rgba(255, 255, 255, .1); }
+    .toc-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
 
-        /* ── PHASE BODY ── */
-        .phase-body { max-height: 0; overflow: hidden; transition: max-height .5s cubic-bezier(.4, 0, .2, 1); }
-        .phase.open .phase-body { max-height: 4000px; }
-        .phase-content { padding: 0 var(--space-8) var(--space-8); background: rgba(0, 0, 0, .2); border-top: 1px solid var(--color-border); }
+    .toc-link {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-md);
+      transition: color var(--transition-fast), background var(--transition-fast);
+    }
 
-        .topic-group { padding-top: var(--space-6); }
-        .topic-group-label {
-            font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
-            color: var(--color-text-faint); font-weight: 600; margin-bottom: var(--space-4);
-            display: flex; align-items: center; gap: var(--space-3);
-        }
-        .topic-group-label::after { content: ''; flex: 1; height: 1px; background: var(--color-border); }
+    .toc-link:hover,
+    .toc-link.active {
+      color: var(--color-text);
+      background: rgba(255, 255, 255, 0.05);
+    }
 
-        .points-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--space-2); }
+    .toc-link.active {
+      color: var(--color-accent);
+    }
 
-        .point {
-            display: flex; align-items: flex-start; gap: var(--space-3);
-            padding: var(--space-3) var(--space-4); border-radius: var(--radius-md);
-            background: rgba(255, 255, 255, .02); border: 1px solid transparent;
-            transition: all .2s; cursor: default;
-        }
-        .point:hover { background: rgba(255, 255, 255, .04); border-color: rgba(255,255,255,0.05); }
+    .toc-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      opacity: 0.6;
+    }
 
-        .point-dot { width: 5px; height: 5px; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
-        .point-text { font-size: var(--text-xs); font-weight: 400; color: var(--color-text-muted); line-height: 1.5; }
+    /* ─── SYLLABUS CONTROLS (FIXED) ───────────────────────────────────── */
+    .syllabus-controls {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      margin-bottom: var(--space-8);
+    }
 
-        /* ── BOTTOM CTA ── */
-        #bottom-cta { text-align: center; padding: var(--space-24) var(--space-4); position: relative; overflow: hidden; }
-        .bcta-glow { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 600px; height: 300px; border-radius: 50%; background: radial-gradient(ellipse, rgba(232, 255, 71, .1) 0%, transparent 70%); pointer-events: none; }
+    .controls-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
 
-        .bcta-inner { position: relative; z-index: 2; }
-        .bcta-label { font-size: var(--text-xs); letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: var(--space-4); font-weight: 600; }
-        .bcta-h { font-size: var(--text-2xl); font-weight: 700; letter-spacing: -.02em; margin-bottom: var(--space-4); }
-        .bcta-h span { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .bcta-sub { font-size: var(--text-base); color: var(--color-text-muted); margin-bottom: var(--space-10); }
+    .expand-controls {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
 
-        .btn-big {
-            display: inline-flex; align-items: center; gap: var(--space-3);
-            background: var(--color-text); color: #000;
-            padding: var(--space-4) var(--space-10); border-radius: var(--radius-full);
-            font-size: var(--text-base); font-weight: 700;
-            text-decoration: none; cursor: pointer; border: none;
-            transition: all .3s;
-        }
+    .expand-btn {
+      font-size: var(--text-xs);
+      font-weight: 500;
+      color: var(--color-text-muted);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-full);
+      transition: color var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+      white-space: nowrap;
+    }
 
-        .btn-big:hover { background: var(--accent); box-shadow: 0 10px 40px var(--accent-glow); transform: translateY(-2px); }
+    .expand-btn:hover {
+      color: var(--color-text);
+      border-color: var(--color-border-hi);
+    }
 
-        /* ── FOOTER ── */
-        footer { border-top: 1px solid var(--color-border); padding: var(--space-8) clamp(var(--space-4), 5vw, var(--space-12)); display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-        .f-logo { font-weight: 600; font-size: var(--text-xs); color: var(--color-text-muted); }
-        .f-logo span { color: var(--color-text-faint); font-weight: 400; }
-        .f-links { display: flex; gap: var(--space-6); }
-        .f-links a { font-size: var(--text-xs); color: var(--color-text-faint); text-decoration: none; transition: color .2s; }
-        .f-links a:hover { color: var(--color-text); }
-        .f-copy { font-size: 11px; color: var(--color-text-faint); }
+    .total-badge {
+      font-size: var(--text-xs);
+      color: var(--color-text-faint);
+      font-family: var(--font-mono);
+      margin-left: auto;
+      white-space: nowrap;
+    }
 
-        /* ── REVEAL ── */
-        .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
-        .rd1 { transition-delay: .08s; } .rd2 { transition-delay: .16s; } .rd3 { transition-delay: .24s; }
+    /* ─── FILTER BAR (FIXED) ──────────────────────────────────────────── */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+      padding: var(--space-3) var(--space-4);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-2xl);
+      width: 100%;
+    }
 
-        @media(max-width:860px) {
-            nav { padding: var(--space-3) var(--space-5); }
-            .nav-right .nav-links-hide { display: none; }
-            #hero-header { padding-top: 100px; }
-            main { padding: var(--space-8) var(--space-4) var(--space-20); }
-            .phase-header { padding: var(--space-5) var(--space-6); gap: var(--space-4); }
-            .phase-content { padding: 0 var(--space-6) var(--space-6); }
-            .points-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+    .filter-btn {
+      font-size: var(--text-xs);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: var(--space-2) var(--space-4);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-full);
+      color: var(--color-text-muted);
+      background: transparent;
+      transition: all var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--color-border-hi);
+      color: var(--color-text);
+    }
+
+    .filter-btn.active {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: #fff;
+    }
+
+    /* ─── PHASE CARD ─────────────────────────────────────────────────── */
+    .phase {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-2xl);
+      background: var(--color-surface);
+      margin-bottom: var(--space-4);
+      overflow: hidden;
+      transition: border-color var(--transition-mid), box-shadow var(--transition-mid);
+    }
+
+    .phase.hidden {
+      display: none;
+    }
+
+    .phase:hover {
+      border-color: var(--color-border-med);
+    }
+
+    .phase.open {
+      border-color: var(--color-border-med);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-5);
+      padding: var(--space-6) var(--space-7);
+      cursor: pointer;
+      user-select: none;
+      transition: background var(--transition-fast);
+      position: relative;
+    }
+
+    .phase-header:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .phase-accent-bar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      border-radius: var(--radius-full) 0 0 var(--radius-full);
+    }
+
+    .phase-icon-wrap {
+      flex-shrink: 0;
+      width: 46px;
+      height: 46px;
+      border-radius: var(--radius-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .phase-meta {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .phase-num {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-text-faint);
+      margin-bottom: 2px;
+    }
+
+    .phase-title {
+      font-size: var(--text-base);
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .phase-sub {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      margin-top: 2px;
+    }
+
+    .phase-right {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      flex-shrink: 0;
+    }
+
+    .phase-count {
+      font-size: var(--text-xs);
+      color: var(--color-text-faint);
+      font-family: var(--font-mono);
+    }
+
+    .phase-chevron {
+      width: 20px;
+      height: 20px;
+      color: var(--color-text-faint);
+      transition: transform var(--transition-mid);
+    }
+
+    .phase.open .phase-chevron {
+      transform: rotate(180deg);
+    }
+
+    .phase-badge {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+    }
+
+    @media(max-width:600px) {
+      .phase-right .phase-count {
+        display: none;
+      }
+
+      .phase-right .phase-badge {
+        display: none;
+      }
+
+      .phase-header {
+        padding: var(--space-5) var(--space-5);
+      }
+    }
+
+    /* Phase body */
+    .phase-body {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows var(--transition-slow);
+    }
+
+    .phase.open .phase-body {
+      grid-template-rows: 1fr;
+    }
+
+    .phase-body-inner {
+      overflow: hidden;
+    }
+
+    .phase-content {
+      padding: 0 var(--space-7) var(--space-8);
+      border-top: 1px solid var(--color-border);
+      padding-top: var(--space-6);
+    }
+
+    @media(max-width:600px) {
+      .phase-content {
+        padding: var(--space-5) var(--space-4) var(--space-6);
+      }
+    }
+
+    /* Lesson grid */
+    .lessons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
+      gap: var(--space-3);
+    }
+
+    .lesson-group {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-5);
+    }
+
+    .lesson-group-title {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-4);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .lesson-group-title .g-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .lesson-items {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .lesson-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      line-height: 1.5;
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-md);
+      transition: background var(--transition-fast), color var(--transition-fast);
+    }
+
+    .lesson-item:hover {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--color-text);
+    }
+
+    .lesson-item .check {
+      flex-shrink: 0;
+      margin-top: 1px;
+      opacity: 0.4;
+    }
+
+    /* ─── CTA STRIP ──────────────────────────────────────────────────── */
+    .cta-strip {
+      text-align: center;
+      padding: clamp(var(--space-16), 8vw, var(--space-24)) var(--space-4);
+      border-top: 1px solid var(--color-border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-strip::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(124, 110, 245, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-strip h2 {
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: var(--space-4);
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-strip p {
+      font-size: var(--text-base);
+      color: var(--color-text-muted);
+      max-width: 400px;
+      margin: 0 auto var(--space-8);
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-4) var(--space-8);
+      font-size: var(--text-base);
+      font-weight: 600;
+      background: var(--color-accent);
+      color: #fff;
+      border-radius: var(--radius-full);
+      transition: background var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-primary:hover {
+      background: #6b5de0;
+      box-shadow: 0 0 40px var(--color-accent-glow);
+      transform: translateY(-1px);
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────────────────── */
+    footer {
+      padding: var(--space-8) clamp(var(--space-4), 5vw, var(--space-12));
+      border-top: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      font-size: var(--text-xs);
+      color: var(--color-text-faint);
+    }
+
+    .footer-brand {
+      font-weight: 600;
+      color: var(--color-text-muted);
+    }
+
+    /* ─── ANIMATIONS ─────────────────────────────────────────────────── */
+    @keyframes fadeDown {
+      from {
+        opacity: 0;
+        transform: translateY(-12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .reveal {
+      opacity: 1;
+    }
+
+    @supports(animation-timeline:scroll()) {
+      .reveal {
+        opacity: 0;
+        animation: fadeIn linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 60%;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <!-- Reading progress bar -->
+  <div class="reading-bar" id="readingBar" aria-hidden="true"></div>
 
-    <!-- NAV -->
-    <nav>
-        <a href="index.html" class="nav-logo">
-            <div class="nav-logo-dot"></div>
-            <div>
-                AI Masterclass
-                <div class="nav-sub">by Dominal Tech · skills.dominal.in</div>
-            </div>
-        </a>
-        <div class="nav-right">
-            <a href="index.html" class="nav-links-hide">← Home</a>
-            <a href="index.html#tools" class="nav-links-hide">Projects</a>
-            <a href="index.html#cta" class="nav-cta">Join the Course →</a>
+  <!-- NAV -->
+  <nav id="mainNav">
+    <div class="nav-logo">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-label="AI Masterclass logo">
+        <rect width="32" height="32" rx="8" fill="rgba(124,110,245,0.12)" />
+        <path d="M16 6 L22 9.5 L22 16.5 L16 20 L10 16.5 L10 9.5 Z" stroke="#7c6ef5" stroke-width="1.5" fill="none" />
+        <circle cx="16" cy="13" r="2.5" fill="#7c6ef5" />
+        <line x1="16" y1="6" x2="16" y2="10.5" stroke="#7c6ef5" stroke-width="1" opacity="0.6" />
+        <line x1="22" y1="9.5" x2="18.2" y2="11.5" stroke="#7c6ef5" stroke-width="1" opacity="0.6" />
+        <line x1="22" y1="16.5" x2="18.2" y2="14.5" stroke="#7c6ef5" stroke-width="1" opacity="0.6" />
+        <line x1="16" y1="20" x2="16" y2="15.5" stroke="#7c6ef5" stroke-width="1" opacity="0.6" />
+        <line x1="10" y1="16.5" x2="13.8" y2="14.5" stroke="#7c6ef5" stroke-width="1" opacity="0.6" />
+        <line x1="10" y1="9.5" x2="13.8" y2="11.5" stroke="#7c6ef5" stroke-width="1" opacity="0.6" />
+        <circle cx="16" cy="25" r="1.5" fill="#4fd4c8" />
+        <line x1="16" y1="20" x2="16" y2="23.5" stroke="#4fd4c8" stroke-width="1" opacity="0.5" />
+      </svg>
+      <div>
+        <div style="line-height:1.2">AI Masterclass</div>
+        <div style="font-size:10px;font-weight:400;color:var(--color-text-faint);letter-spacing:0.04em">by Dominal Tech
         </div>
-    </nav>
-
-    <!-- PROGRESS BAR -->
-    <div class="progress-bar-wrap">
-        <div id="progress-bar"></div>
+      </div>
+      <span class="nav-logo-badge">Syllabus</span>
     </div>
+    <div style="display:flex;align-items:center;gap:var(--space-3);">
+      <a href="./index.html" class="nav-back">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          aria-hidden="true">
+          <path d="M19 12H5M12 5l-7 7 7 7" />
+        </svg>
+        Back to Home
+      </a>
+      <a href="https://skills.dominal.in" target="_blank" rel="noopener noreferrer" class="nav-cta">Enroll Now</a>
+    </div>
+  </nav>
 
-    <!-- HERO HEADER -->
-    <section id="hero-header">
-        <div class="hh-grid"></div>
-        <div class="hh-orb hh-orb-1"></div>
-        <div class="hh-inner">
-            <div class="hh-badge">
-                <div class="hh-badge-dot"></div>Full Course Roadmap
-            </div>
-            <h1 class="hh-title">Complete Course<br><em>Syllabus</em></h1>
-            <p class="hh-sub">From Beginner to Building Real AI Products</p>
-            <div class="hh-meta">
-                <div class="hh-chip">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <rect x="3" y="3" width="18" height="18" rx="2" />
-                        <path d="M3 9h18M9 21V9" />
-                    </svg>
-                    9 Phases
-                </div>
-                <div class="hh-chip">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <circle cx="12" cy="12" r="10" />
-                        <path d="M12 6v6l4 2" />
-                    </svg>
-                    Self-paced
-                </div>
-                <div class="hh-chip">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-                    </svg>
-                    Build-first approach
-                </div>
-                <div class="hh-chip">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                    </svg>
-                    Lifetime access
-                </div>
-            </div>
+  <!-- HERO HEADER -->
+  <div class="page-hero">
+    <div class="container--mid">
+      <div class="page-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="2" />
+          <path d="M9 9h6M9 12h6M9 15h4" />
+        </svg>
+        Complete Course Roadmap
+      </div>
+      <h1>Complete Course<br>
+        <span
+          style="background:linear-gradient(135deg,var(--color-accent),var(--color-accent-2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Syllabus</span>
+      </h1>
+      <p>From Beginner to Building Real AI Products</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            aria-hidden="true">
+            <path d="M12 2L2 7l10 5 10-5-10-5z" />
+            <path d="M2 17l10 5 10-5" />
+            <path d="M2 12l10 5 10-5" />
+          </svg>
+          9 Phases
         </div>
-    </section>
-
-    <!-- PHASE NAV -->
-    <div id="phase-nav">
-        <div class="pnav-inner" id="pnav-inner"></div>
+        <div class="hero-meta-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            aria-hidden="true">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
+          140+ Topics
+        </div>
+        <div class="hero-meta-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            aria-hidden="true">
+            <polygon points="5 3 19 12 5 21 5 3" />
+          </svg>
+          6 Real Projects
+        </div>
+        <div class="hero-meta-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            aria-hidden="true">
+            <polyline points="16 18 22 12 16 6" />
+            <polyline points="8 6 2 12 8 18" />
+          </svg>
+          Beginner Friendly
+        </div>
+      </div>
     </div>
+  </div>
 
-    <!-- MAIN -->
-    <main id="main-content">
-        <div id="phases-container"></div>
-    </main>
+  <!-- MAIN CONTENT -->
+  <div class="container" style="padding-bottom:0">
+    <div class="page-layout" style="grid-template-columns:1fr;">
+      <!-- TOC sidebar -->
+      <!-- <aside class="toc" aria-label="Table of contents">
+        <div class="toc-title">Jump to Phase</div>
+        <nav class="toc-list" id="tocList">
+          <!-- JS will populate -->
+      </nav>
+      </aside> -->
 
-    <!-- BOTTOM CTA -->
-    <section id="bottom-cta">
-        <div class="bcta-glow"></div>
-        <div class="bcta-inner">
-            <div class="bcta-label reveal">9 Phases · 100% Practical</div>
-            <h2 class="bcta-h reveal">Ready to Start <span>Building?</span></h2>
-            <p class="bcta-sub reveal">Everything in this syllabus comes with real projects, real code, real shipping.
-            </p>
-            <a href="index.html#cta" class="btn-big reveal">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <polygon points="5 3 19 12 5 21 5 3" />
+      <!-- Syllabus content -->
+      <main id="syllabusMain">
+
+        <div class="syllabus-controls">
+          <div class="controls-row">
+            <div class="expand-controls">
+              <button class="expand-btn" id="expandAllBtn">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  aria-hidden="true">
+                  <polyline points="7 13 12 18 17 13" />
+                  <polyline points="7 6 12 11 17 6" />
                 </svg>
-                Join the Course
-            </a>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="f-logo">AI Masterclass <span>by Dominal Tech</span></div>
-        <div class="f-links">
-            <a href="index.html">Home</a>
-            <a href="#">Pricing</a>
-            <a href="https://dominal.in">dominal.in</a>
-        </div>
-        <div class="f-copy">© 2025 Dominal Tech Pvt Ltd</div>
-    </footer>
-
-    <script>
-        /* ══════════════════════════════════════════
-           SYLLABUS DATA
-        ══════════════════════════════════════════ */
-        const phases = [
-            {
-                num: "01", id: "foundation",
-                title: "Foundation",
-                subtitle: "Basics of AI Apps",
-                desc: "Understand how AI applications actually work before writing a single line.",
-                color: "#e8ff47",
-                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`,
-                groups: [
-                    {
-                        label: "How AI Works",
-                        points: [
-                            "How AI apps work — user → app → API → response",
-                            "Why AI has no memory and how to handle it",
-                            "How to send prompts and get responses",
-                            "Basic prompt writing and controlling output",
-                            "Using system instructions to guide AI behavior",
-                            "Understanding input → output flow",
-                        ]
-                    },
-                    {
-                        label: "Prompts & Output",
-                        points: [
-                            "Formatting AI responses (clean text, bullets)",
-                            "Using chat history to simulate memory",
-                            "Basic idea of adding hidden context",
-                            "Creating simple AI workflows",
-                            "Using prompt templates",
-                            "Dynamic prompts using user input",
-                            "Controlling response length (short/long)",
-                        ]
-                    },
-                    {
-                        label: "AI Personalities & UI",
-                        points: [
-                            "Using multiple languages (English, Hindi, Hinglish)",
-                            "Making AI behave like a teacher, assistant, etc.",
-                            "Building a basic chatbot interface",
-                            "UI basics: message bubbles, typing animation, auto scroll",
-                            "Showing loading states",
-                            "Adding example prompts for users",
-                        ]
-                    }
-                ]
-            },
-            {
-                num: "02", id: "control",
-                title: "Control & Interaction",
-                subtitle: "Advanced Conversation Management",
-                desc: "Take full control over what AI says, how it says it, and how users interact with it.",
-                color: "#47ffb8",
-                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07M8.46 8.46a5 5 0 0 0 0 7.07"/></svg>`,
-                groups: [
-                    {
-                        label: "Conversation Control",
-                        points: [
-                            "Managing multi-turn conversations",
-                            "Setting rules for AI behavior",
-                            "Creating structured outputs (JSON, formatted data)",
-                            "Improving AI responses automatically",
-                            "Cleaning user input before sending",
-                            "Cleaning AI output before showing",
-                            "Validating user input",
-                            "Advanced control of response size",
-                        ]
-                    },
-                    {
-                        label: "UX Features",
-                        points: [
-                            "Generating multiple answer options",
-                            "Regenerate response feature",
-                            "Editing and deleting messages",
-                            "Copy response functionality",
-                            "Suggested prompts for users",
-                            "One-click actions (summarize, explain)",
-                            "Predefined modes (study mode, resume mode)",
-                            "Auto prompt suggestions",
-                        ]
-                    },
-                    {
-                        label: "Error Handling",
-                        points: [
-                            "Handling errors with fallback responses",
-                            "Filtering AI responses",
-                            "Handling uncertain AI answers",
-                        ]
-                    }
-                ]
-            },
-            {
-                num: "03", id: "systems",
-                title: "Real AI Systems",
-                subtitle: "Building Complex Workflows",
-                desc: "Break beyond simple chatbots — build full AI systems that think, decide, and act.",
-                color: "#ff6b35",
-                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`,
-                groups: [
-                    {
-                        label: "AI Orchestration",
-                        points: [
-                            "Breaking complex problems into steps",
-                            "Chaining multiple AI calls",
-                            "Creating multi-step workflows",
-                            "AI-based decision making",
-                            "Advanced context handling",
-                        ]
-                    },
-                    {
-                        label: "Data & Memory",
-                        points: [
-                            "Connecting AI with databases",
-                            "Saving and reusing responses",
-                            "Session-based memory",
-                            "Personalizing AI for individual users",
-                        ]
-                    },
-                    {
-                        label: "Multi-modal & Automation",
-                        points: [
-                            "Handling text, files, and voice together",
-                            "File uploads (PDF, images)",
-                            "Drag-and-drop UI",
-                            "Voice input and speech output",
-                            "Combining multiple APIs",
-                            "Using search before AI response",
-                            "Triggering actions (email, save data)",
-                            "Automating workflows",
-                            "Integrating AI into web apps",
-                        ]
-                    }
-                ]
-            },
-            {
-                num: "04", id: "rag",
-                title: "Custom Data & RAG",
-                subtitle: "Most Important Module",
-                desc: "Teach AI your own knowledge. Build 'chat with your data' systems from scratch.",
-                color: "#a78bfa",
-                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>`,
-                groups: [
-                    {
-                        label: "RAG Core Concepts",
-                        points: [
-                            "Adding your own data to AI",
-                            "Building 'chat with your data' systems",
-                            "Searching data before answering",
-                            "Combining search + AI for accuracy",
-                            "Managing large data inputs",
-                            "Handling context size limits",
-                        ]
-                    },
-                    {
-                        label: "Accuracy & Reliability",
-                        points: [
-                            "Making AI answers more reliable",
-                            "Avoiding wrong or fake answers (hallucinations)",
-                            "Building knowledge-based bots",
-                        ]
-                    },
-                    {
-                        label: "Real-World Applications",
-                        points: [
-                            "AI tools for PDFs and notes",
-                            "Study assistant systems",
-                            "Customer support bots",
-                            "Internal business tools",
-                            "Real-world use cases of custom AI",
-                        ]
-                    }
-                ]
-            },
-            {
-                num: "05", id: "ux",
-                title: "UI / UX Design",
-                subtitle: "Make It Look Professional",
-                desc: "Your AI product is only as good as how it feels. Make it beautiful and usable.",
-                color: "#38bdf8",
-                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>`,
-                groups: [
-                    {
-                        label: "Chat UX Features",
-                        points: [
-                            "Message timestamps",
-                            "Chat history sidebar",
-                            "Pin important chats",
-                            "Save chats as PDF",
-                            "Share conversations",
-                            "Retry buttons and loading animations",
-                        ]
-                    },
-                    {
-                        label: "Text & Formatting",
-                        points: [
-                            "Proper text formatting (bold, lists, code)",
-                            "Code blocks with copy button",
-                            "Highlight key information",
-                            "Improving readability",
-                            "Smooth transitions and animations",
-                        ]
-                    },
-                    {
-                        label: "Layout & Theming",
-                        points: [
-                            "Dark / light mode toggle",
-                            "Language toggle UI",
-                            "Response size toggle",
-                            "Chat categories",
-                            "AI branding / avatar",
-                            "Clean layout design",
-                            "Mobile-friendly design",
-                            "Empty screen UI (onboarding)",
-                        ]
-                    }
-                ]
-            },
-            {
-                num: "06", id: "security",
-                title: "Security, Cost & Performance",
-                subtitle: "Build for Production",
-                desc: "Keep your API keys safe, your costs low, and your app blazing fast.",
-                color: "#f472b6",
-                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
-                groups: [
-                    {
-                        label: "Security Basics",
-                        points: [
-                            "Keeping API keys secure",
-                            "Using backend for API calls",
-                            "Environment variables best practices",
-                            "Setting usage limits per user",
-                            "Managing multiple API keys",
-                        ]
-                    },
-                    {
-                        label: "Cost Management",
-                        points: [
-                            "Controlling token usage",
-                            "Limiting user requests (rate limiting)",
-                            "Caching responses to save costs",
-                            "Using cost-efficient models",
-                            "Tracking API usage and spending",
-                        ]
-                    },
-                    {
-                        label: "Performance",
-                        points: [
-                            "Optimizing chat history size",
-                            "Reducing unnecessary data sent to API",
-                            "Faster responses with streaming",
-                            "General performance optimization",
-                            "Balancing speed vs accuracy",
-                        ]
-                    }
-                ]
-            },
-            {
-                num: "07", id: "reliability",
-                title: "Reliability & Testing",
-                subtitle: "Build Systems That Don't Break",
-                desc: "Great products handle failure gracefully. Learn to build AI apps that stay stable.",
-                color: "#fb923c",
-                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9S3 16.97 3 12 7.03 3 12 3s9 4.03 9 9z"/></svg>`,
-                groups: [
-                    {
-                        label: "Error Handling",
-                        points: [
-                            "Handling API errors gracefully",
-                            "Retry mechanisms for failed calls",
-                            "Timeout handling",
-                            "Logging requests for debugging",
-                        ]
-                    },
-                    {
-                        label: "Monitoring & Feedback",
-                        points: [
-                            "Tracking issues in production",
-                            "Monitoring user behavior",
-                            "Collecting user feedback",
-                            "Content moderation",
-                        ]
-                    },
-                    {
-                        label: "Testing",
-                        points: [
-                            "Testing different user inputs",
-                            "Handling edge cases",
-                            "Improving based on failures",
-                            "Building stable, predictable systems",
-                        ]
-                    }
-                ]
-            },
-            {
-                num: "08", id: "career",
-                title: "Career & Product Thinking",
-                subtitle: "From Builder to Creator",
-                desc: "Think like a product builder. Turn your AI skills into real opportunities.",
-                color: "#4ade80",
-                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>`,
-                groups: [
-                    {
-                        label: "Product Mindset",
-                        points: [
-                            "Solving real-world problems with AI",
-                            "Building minimum viable products (MVP)",
-                            "Avoiding overbuilding",
-                            "Fast iteration: build → test → improve",
-                            "Focus on user experience, not just tech",
-                        ]
-                    },
-                    {
-                        label: "Portfolio & Projects",
-                        points: [
-                            "Building multiple real projects",
-                            "Explaining your projects clearly to others",
-                            "Working with real data",
-                            "Startup thinking — turning ideas into products",
-                        ]
-                    },
-                    {
-                        label: "AI for India",
-                        points: [
-                            "AI for business use cases",
-                            "AI for Indian users and local languages",
-                            "AI for local businesses and startups",
-                        ]
-                    }
-                ]
-            },
-            {
-                num: "09", id: "advanced",
-                title: "Advanced",
-                subtitle: "Optional — For Power Builders",
-                desc: "Go further with agents, tool calling, and scalable AI systems.",
-                color: "#e879f9",
-                icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
-                groups: [
-                    {
-                        label: "Advanced Capabilities",
-                        points: [
-                            "AI agents that take actions autonomously",
-                            "Tool / function calling",
-                            "Advanced memory systems",
-                            "Example-based (few-shot) learning",
-                            "Advanced multi-step workflows",
-                            "Scaling AI systems for more users",
-                        ]
-                    }
-                ]
-            }
-        ];
-
-        /* ══════════════════════════════════════════
-           BUILD DOM
-        ══════════════════════════════════════════ */
-        const pnavInner = document.getElementById('pnav-inner');
-        const container = document.getElementById('phases-container');
-
-        phases.forEach((phase, idx) => {
-            /* phase nav button */
-            const btn = document.createElement('button');
-            btn.className = 'pnav-btn';
-            btn.dataset.idx = idx;
-            btn.innerHTML = `<span class="pnav-num">${phase.num}</span>${phase.title}`;
-            btn.style.setProperty('--ph-c', phase.color);
-            pnavInner.appendChild(btn);
-
-            /* phase accordion */
-            const section = document.createElement('div');
-            section.className = 'phase reveal';
-            section.id = `phase-${phase.id}`;
-            section.dataset.idx = idx;
-
-            const totalPoints = phase.groups.reduce((s, g) => s + g.points.length, 0);
-
-            section.innerHTML = `
-    <div class="phase-header">
-      <div class="phase-icon-wrap" style="background:${phase.color}18; color:${phase.color}">
-        ${phase.icon}
-      </div>
-      <div class="phase-meta">
-        <div class="phase-num" style="color:${phase.color}">Phase ${phase.num} — ${phase.subtitle}</div>
-        <div class="phase-title">${phase.title}</div>
-        <div class="phase-desc">${phase.desc}</div>
-      </div>
-      <div class="phase-right">
-        <div class="phase-count">${totalPoints} topics</div>
-        <div class="phase-chevron">
-          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-      </div>
-    </div>
-    <div class="phase-body">
-      <div class="phase-content">
-        ${phase.groups.map(g => `
-          <div class="topic-group">
-            <div class="topic-group-label">${g.label}</div>
-            <div class="points-grid">
-              ${g.points.map(p => `
-                <div class="point">
-                  <div class="point-dot" style="background:${phase.color}"></div>
-                  <div class="point-text">${p}</div>
-                </div>
-              `).join('')}
+                Expand All
+              </button>
+              <button class="expand-btn" id="collapseAllBtn">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  aria-hidden="true">
+                  <polyline points="17 11 12 6 7 11" />
+                  <polyline points="17 18 12 13 7 18" />
+                </svg>
+                Collapse All
+              </button>
             </div>
+            <div class="total-badge" id="totalBadge">140 topics</div>
           </div>
-        `).join('')}
-      </div>
+          <div class="filter-bar" id="filterBar">
+            <!-- populated by JS -->
+          </div>
+        </div>
+
+        <div id="phaseList"></div>
+
+      </main>
+
     </div>
-  `;
+  </div>
 
-            container.appendChild(section);
-        });
+  <!-- CTA STRIP -->
+  <div class="cta-strip">
+    <div class="container--mid">
+      <h2>Ready to start building?</h2>
+      <p>Join the course and go from zero to shipping your first real AI product.</p>
+      <a href="https://skills.dominal.in" target="_blank" rel="noopener noreferrer" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          aria-hidden="true">
+          <polygon points="5 3 19 12 5 21 5 3" />
+        </svg>
+        Join AI Masterclass
+      </a>
+    </div>
+  </div>
 
-        /* ══════════════════════════════════════════
-           ACCORDION LOGIC
-        ══════════════════════════════════════════ */
-        function openPhase(idx) {
-            document.querySelectorAll('.phase').forEach((el, i) => {
-                el.classList.toggle('open', i === idx);
-            });
-            document.querySelectorAll('.pnav-btn').forEach((btn, i) => {
-                btn.classList.toggle('active', i === idx);
-                if (i === idx) {
-                    btn.style.color = phases[i].color;
-                    btn.style.borderBottomColor = phases[i].color;
-                    btn.querySelector('.pnav-num').style.background = phases[i].color + '22';
-                } else {
-                    btn.style.color = '';
-                    btn.style.borderBottomColor = '';
-                    btn.querySelector('.pnav-num').style.background = '';
-                }
-            });
+  <!-- FOOTER -->
+  <footer>
+    <div><span class="footer-brand">AI Masterclass</span> · by Dominal Tech</div>
+    <div style="color:var(--color-text-faint)">skills.dominal.in · Nashik, India</div>
+    <div>© 2026 Dominal Tech. All rights reserved.</div>
+  </footer>
+
+  <script>
+    /* ─── DATA ────────────────────────────────────────────────────────── */
+    const PHASES = [
+      {
+        id: 'phase-1', num: '01', color: '#7c6ef5',
+        label: 'Foundation', badge: 'Start Here', badgeColor: 'rgba(124,110,245,0.15)', badgeText: '#7c6ef5',
+        title: 'Foundation — Basics of AI Apps',
+        sub: 'How AI apps really work, under the hood',
+        icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`,
+        groups: [
+          { title: 'AI & APIs', color: '#7c6ef5', items: ['How AI apps work (user → app → API → response)', 'Why AI has no memory and how to handle it', 'How to send prompts and get responses', 'Basic prompt writing and controlling output', 'Using system instructions to guide AI behavior', 'Formatting AI responses (clean text, bullets)'] },
+          { title: 'Prompts & Context', color: '#7c6ef5', items: ['Using chat history to simulate memory', 'Basic idea of adding hidden context', 'Understanding input → output flow', 'Creating simple AI workflows', 'Using prompt templates', 'Dynamic prompts using user input'] },
+          { title: 'Response Control', color: '#7c6ef5', items: ['Controlling response length (short/long)', 'Using multiple languages (English, Hindi, Hinglish)', 'Making AI behave like teacher, assistant, etc.'] },
+          { title: 'Chatbot UI Basics', color: '#7c6ef5', items: ['Building a basic chatbot interface', 'UI basics: message bubbles, typing animation, auto scroll', 'Showing loading states', 'Adding example prompts for users'] },
+        ]
+      },
+      {
+        id: 'phase-2', num: '02', color: '#4fd4c8',
+        label: 'Control', badge: 'Core Skills', badgeColor: 'rgba(79,212,200,0.1)', badgeText: '#4fd4c8',
+        title: 'Control & Interaction',
+        sub: 'Master conversations, outputs, and user experience',
+        icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>`,
+        groups: [
+          { title: 'Conversation Management', color: '#4fd4c8', items: ['Managing multi-turn conversations', 'Setting rules for AI behavior', 'Creating structured outputs (JSON, formatted data)', 'Improving AI responses automatically', 'Cleaning user input before sending', 'Cleaning AI output before showing'] },
+          { title: 'Input & Output', color: '#4fd4c8', items: ['Validating user input', 'Advanced control of response size', 'Generating multiple answers', 'Regenerate response feature', 'Editing and deleting messages', 'Copy response functionality'] },
+          { title: 'UX Shortcuts', color: '#4fd4c8', items: ['Suggested prompts for users', 'One-click actions (summarize, explain)', 'Predefined modes (study mode, resume mode)', 'Auto prompt suggestions'] },
+          { title: 'Reliability', color: '#4fd4c8', items: ['Handling errors with fallback responses', 'Filtering AI responses', 'Handling uncertain AI answers'] },
+        ]
+      },
+      {
+        id: 'phase-3', num: '03', color: '#f97316',
+        label: 'Systems', badge: 'Key Phase', badgeColor: 'rgba(249,115,22,0.1)', badgeText: '#f97316',
+        title: 'Building Real AI Systems',
+        sub: 'Chain AI calls, connect data, automate workflows',
+        icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M17.5 14v7M14 17.5h7"/></svg>`,
+        groups: [
+          { title: 'Multi-Step AI', color: '#f97316', items: ['Breaking complex problems into steps', 'Chaining multiple AI calls', 'Creating multi-step workflows', 'AI-based decision making'] },
+          { title: 'Data & Memory', color: '#f97316', items: ['Connecting AI with databases', 'Saving and reusing responses', 'Session-based memory', 'Personalizing AI for users', 'Advanced context handling'] },
+          { title: 'File & Voice', color: '#f97316', items: ['Handling text, files, and voice together', 'File uploads (PDF, images)', 'Drag-and-drop UI', 'Voice input and speech output'] },
+          { title: 'Integrations', color: '#f97316', items: ['Combining multiple APIs', 'Using search before AI response', 'Triggering actions (email, save data, etc.)', 'Automating workflows', 'Integrating AI into web apps'] },
+        ]
+      },
+      {
+        id: 'phase-4', num: '04', color: '#e879f9',
+        label: 'RAG', badge: 'Most Important', badgeColor: 'rgba(232,121,249,0.12)', badgeText: '#e879f9',
+        title: 'Custom Data & RAG',
+        sub: 'Make AI answer with YOUR knowledge base',
+        icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>`,
+        groups: [
+          { title: 'RAG Fundamentals', color: '#e879f9', items: ['Adding your own data to AI', 'Building "chat with your data" systems', 'Searching data before answering', 'Combining search + AI for accuracy', 'Managing large data inputs'] },
+          { title: 'Accuracy & Trust', color: '#e879f9', items: ['Making AI answers more reliable', 'Avoiding wrong or fake answers', 'Handling context size', 'Building knowledge-based bots'] },
+          { title: 'Real Use Cases', color: '#e879f9', items: ['AI tools for PDFs and notes', 'Study assistant systems', 'Customer support bots', 'Internal business tools', 'Real-world use cases of custom AI'] },
+        ]
+      },
+      {
+        id: 'phase-5', num: '05', color: '#38bdf8',
+        label: 'UI/UX', badge: 'Polish', badgeColor: 'rgba(56,189,248,0.1)', badgeText: '#38bdf8',
+        title: 'UI / UX — Make It Look Professional',
+        sub: 'Design-quality interfaces that users love',
+        icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg>`,
+        groups: [
+          { title: 'Chat Interface', color: '#38bdf8', items: ['Message timestamps', 'Chat history sidebar', 'Pin important chats', 'Save chats as PDF', 'Share conversations'] },
+          { title: 'Text Formatting', color: '#38bdf8', items: ['Proper text formatting (bold, lists, code)', 'Code blocks with copy button', 'Highlight key information'] },
+          { title: 'Customization', color: '#38bdf8', items: ['Dark/light mode toggle', 'Language toggle UI', 'Response size toggle', 'Chat categories', 'AI branding/avatar'] },
+          { title: 'Feel & Motion', color: '#38bdf8', items: ['Clean layout design', 'Improving readability', 'Retry buttons', 'Loading animations', 'Smooth transitions', 'Mobile-friendly design', 'Empty screen UI'] },
+        ]
+      },
+      {
+        id: 'phase-6', num: '06', color: '#fb923c',
+        label: 'Security', badge: 'Essential', badgeColor: 'rgba(251,146,60,0.1)', badgeText: '#fb923c',
+        title: 'Security, Cost & Performance',
+        sub: 'Build responsibly — protect keys, manage costs',
+        icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+        groups: [
+          { title: 'API Security', color: '#fb923c', items: ['Keeping API keys secure', 'Using backend for API calls', 'Environment variables', 'Setting usage limits', 'Managing API keys'] },
+          { title: 'Cost Control', color: '#fb923c', items: ['Controlling token usage', 'Limiting user requests', 'Caching responses', 'Using cost-efficient models', 'Tracking API usage'] },
+          { title: 'Performance', color: '#fb923c', items: ['Optimizing chat history', 'Reducing unnecessary data', 'Faster responses with streaming', 'Performance optimization', 'Balancing speed vs accuracy'] },
+        ]
+      },
+      {
+        id: 'phase-7', num: '07', color: '#4ade80',
+        label: 'Reliability', badge: 'Production', badgeColor: 'rgba(74,222,128,0.1)', badgeText: '#4ade80',
+        title: 'Reliability & Testing',
+        sub: 'Build systems that never break in production',
+        icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>`,
+        groups: [
+          { title: 'Error Handling', color: '#4ade80', items: ['Handling API errors', 'Retry mechanisms', 'Timeout handling'] },
+          { title: 'Monitoring', color: '#4ade80', items: ['Logging requests', 'Tracking issues', 'Monitoring users', 'Collecting feedback'] },
+          { title: 'Quality & Safety', color: '#4ade80', items: ['Content moderation', 'Testing different inputs', 'Handling edge cases', 'Improving based on failures', 'Building stable systems'] },
+        ]
+      },
+      {
+        id: 'phase-8', num: '08', color: '#facc15',
+        label: 'Career', badge: 'Ship It', badgeColor: 'rgba(250,204,21,0.1)', badgeText: '#facc15',
+        title: 'Career & Product Thinking',
+        sub: 'Think like a founder — solve real problems',
+        icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>`,
+        groups: [
+          { title: 'MVP Mindset', color: '#facc15', items: ['Solving real-world problems', 'Building minimum viable products (MVP)', 'Avoiding overbuilding', 'Fast iteration (build → test → improve)', 'Focus on user experience'] },
+          { title: 'Portfolio Building', color: '#facc15', items: ['Building multiple real projects', 'Explaining your projects clearly', 'Working with real data'] },
+          { title: 'Business & Market', color: '#facc15', items: ['AI for business use', 'AI for Indian users', 'AI for local businesses', 'Startup thinking', 'Turning ideas into products'] },
+        ]
+      },
+      {
+        id: 'phase-9', num: '09', color: '#f43f5e',
+        label: 'Advanced', badge: 'Optional', badgeColor: 'rgba(244,63,94,0.1)', badgeText: '#f43f5e',
+        title: 'Advanced — Optional Deep Dives',
+        sub: 'Go further once you\'ve shipped your first product',
+        icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+        groups: [
+          { title: 'Agents & Tools', color: '#f43f5e', items: ['AI agents — systems that act, not just chat', 'Tool/function calling with AI', 'Advanced memory systems'] },
+          { title: 'Scale & Optimize', color: '#f43f5e', items: ['Example-based learning (few-shot)', 'Advanced multi-step workflows', 'Scaling AI systems for more users'] },
+        ]
+      },
+    ];
+
+    /* ─── COUNT TOTAL TOPICS ──────────────────────────────────────────── */
+    let total = 0;
+    PHASES.forEach(p => p.groups.forEach(g => total += g.items.length));
+    document.getElementById('totalBadge').textContent = total + ' topics';
+
+    /* ─── CHECK ICON SVG ──────────────────────────────────────────────── */
+    const CHECK_SVG = `<svg class="check" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>`;
+
+    /* ─── RENDER PHASES ──────────────────────────────────────────────── */
+    function renderPhases(filterTag) {
+      const container = document.getElementById('phaseList');
+      container.innerHTML = '';
+      // const tocList = document.getElementById('tocList');
+      // tocList.innerHTML = '';
+
+      PHASES.forEach((phase, idx) => {
+        const matchFilter = !filterTag || filterTag === 'all' || phase.label === filterTag;
+        const el = document.createElement('div');
+        el.className = 'phase reveal' + (matchFilter ? '' : ' hidden');
+        el.id = phase.id;
+        el.setAttribute('aria-expanded', 'false');
+
+        // Count items in this phase
+        const itemCount = phase.groups.reduce((a, g) => a + g.items.length, 0);
+
+        // Build lesson groups HTML
+        let groupsHTML = phase.groups.map(g => `
+      <div class="lesson-group">
+        <div class="lesson-group-title">
+          <span class="g-dot" style="background:${g.color}"></span>
+          ${g.title}
+        </div>
+        <div class="lesson-items">
+          ${g.items.map(item => `
+            <div class="lesson-item">
+              ${CHECK_SVG}
+              <span>${item}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `).join('');
+
+        el.innerHTML = `
+      <div class="phase-header" role="button" tabindex="0" aria-controls="${phase.id}-body" aria-expanded="false">
+        <div class="phase-accent-bar" style="background:${phase.color}"></div>
+        <div class="phase-icon-wrap" style="background:${phase.color}18;border-color:${phase.color}22;color:${phase.color}">
+          ${phase.icon}
+        </div>
+        <div class="phase-meta">
+          <div class="phase-num">Phase ${phase.num}</div>
+          <div class="phase-title">${phase.title}</div>
+          <div class="phase-sub">${phase.sub}</div>
+        </div>
+        <div class="phase-right">
+          <span class="phase-badge" style="background:${phase.badgeColor};color:${phase.badgeText}">${phase.badge}</span>
+          <span class="phase-count">${itemCount} topics</span>
+          <svg class="phase-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="phase-body" id="${phase.id}-body">
+        <div class="phase-body-inner">
+          <div class="phase-content">
+            <div class="lessons-grid">${groupsHTML}</div>
+          </div>
+        </div>
+      </div>
+    `;
+
+        // Toggle on click / keyboard
+        const header = el.querySelector('.phase-header');
+        function toggle() {
+          const isOpen = el.classList.contains('open');
+          el.classList.toggle('open', !isOpen);
+          header.setAttribute('aria-expanded', String(!isOpen));
+          el.setAttribute('aria-expanded', String(!isOpen));
         }
+        header.addEventListener('click', toggle);
+        header.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
 
-        // click on header
-        document.querySelectorAll('.phase-header').forEach((header, idx) => {
-            header.addEventListener('click', () => {
-                const phase = header.closest('.phase');
-                const isOpen = phase.classList.contains('open');
-                if (isOpen) {
-                    phase.classList.remove('open');
-                    document.querySelectorAll('.pnav-btn')[idx].classList.remove('active');
-                    document.querySelectorAll('.pnav-btn')[idx].style.color = '';
-                    document.querySelectorAll('.pnav-btn')[idx].style.borderBottomColor = '';
-                } else {
-                    openPhase(idx);
-                    setTimeout(() => {
-                        phase.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }, 50);
-                }
-            });
+        container.appendChild(el);
+
+        // TOC entry
+        // const tocItem = document.createElement('a');
+        // tocItem.className = 'toc-link';
+        // tocItem.href = '#' + phase.id;
+        // tocItem.innerHTML = `<span class="toc-dot" style="background:${phase.color}"></span>${phase.label}`;
+        // tocItem.addEventListener('click', e => {
+        //   e.preventDefault();
+        //   const target = document.getElementById(phase.id);
+        //   if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        // });
+        // tocList.appendChild(tocItem);
+      });
+
+      // Open first phase by default
+      const first = container.querySelector('.phase:not(.hidden)');
+      if (first) { first.classList.add('open'); first.querySelector('.phase-header').setAttribute('aria-expanded', 'true'); }
+    }
+
+    /* ─── FILTER BAR ──────────────────────────────────────────────────── */
+    (function () {
+      const bar = document.getElementById('filterBar');
+      const tags = ['All', ...PHASES.map(p => p.label)];
+      let active = 'all';
+      tags.forEach(tag => {
+        const btn = document.createElement('button');
+        btn.className = 'filter-btn' + (tag === 'All' ? ' active' : '');
+        btn.textContent = tag;
+        btn.addEventListener('click', () => {
+          bar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          active = tag === 'All' ? 'all' : tag;
+          renderPhases(active);
         });
+        bar.appendChild(btn);
+      });
+    })();
 
-        // phase nav buttons
-        document.querySelectorAll('.pnav-btn').forEach((btn, idx) => {
-            btn.addEventListener('click', () => {
-                openPhase(idx);
-                const target = document.querySelectorAll('.phase')[idx];
-                setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
-            });
+    /* ─── EXPAND / COLLAPSE ALL ──────────────────────────────────────── */
+    document.getElementById('expandAllBtn').addEventListener('click', () => {
+      document.querySelectorAll('.phase:not(.hidden)').forEach(p => {
+        p.classList.add('open');
+        p.querySelector('.phase-header').setAttribute('aria-expanded', 'true');
+      });
+    });
+    document.getElementById('collapseAllBtn').addEventListener('click', () => {
+      document.querySelectorAll('.phase').forEach(p => {
+        p.classList.remove('open');
+        p.querySelector('.phase-header')?.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    /* ─── READING PROGRESS BAR ────────────────────────────────────────── */
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const total = document.body.scrollHeight - window.innerHeight;
+      document.getElementById('readingBar').style.width = (scrolled / total * 100).toFixed(1) + '%';
+    }, { passive: true });
+
+    /* ─── TOC ACTIVE STATE ────────────────────────────────────────────── */
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const id = e.target.id;
+          document.querySelectorAll('.toc-link').forEach(l => {
+            l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { threshold: 0.3 });
+
+    /* ─── NAV SCROLL ─────────────────────────────────────────────────── */
+    window.addEventListener('scroll', () => {
+      document.getElementById('mainNav').style.background = window.scrollY > 50
+        ? 'rgba(10,10,10,0.97)' : 'rgba(10,10,10,0.85)';
+    }, { passive: true });
+
+    /* ─── INIT ────────────────────────────────────────────────────────── */
+    renderPhases('all');
+
+    // Observe phases for TOC after render
+    requestAnimationFrame(() => {
+      document.querySelectorAll('.phase').forEach(p => io.observe(p));
+    });
+
+    /* ─── SCROLL REVEAL FALLBACK ─────────────────────────────────────── */
+    (function () {
+      if (CSS.supports('animation-timeline', 'scroll()')) return;
+      const els = document.querySelectorAll('.reveal');
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.style.opacity = '1'; obs.unobserve(e.target); }
         });
-
-        // open first by default
-        openPhase(0);
-
-        /* ══════════════════════════════════════════
-           PROGRESS BAR
-        ══════════════════════════════════════════ */
-        window.addEventListener('scroll', () => {
-            const docH = document.documentElement.scrollHeight - window.innerHeight;
-            const pct = (window.scrollY / docH) * 100;
-            document.getElementById('progress-bar').style.width = pct + '%';
-        });
-
-        /* ══════════════════════════════════════════
-           SCROLL REVEAL
-        ══════════════════════════════════════════ */
-        const revObs = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-                if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); }
-            });
-        }, { threshold: 0.08 });
-        document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
-
-        /* ══════════════════════════════════════════
-           ACTIVE PHASE NAV ON SCROLL
-        ══════════════════════════════════════════ */
-        const phaseEls = document.querySelectorAll('.phase');
-        const scrollObs = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    const idx = parseInt(e.target.dataset.idx);
-                    document.querySelectorAll('.pnav-btn').forEach((b, i) => {
-                        if (i === idx && e.target.classList.contains('open')) {
-                            b.classList.add('active');
-                            b.style.color = phases[i].color;
-                            b.style.borderBottomColor = phases[i].color;
-                            // scroll nav to show active
-                            b.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-                        }
-                    });
-                }
-            });
-        }, { threshold: 0.3 });
-        phaseEls.forEach(el => scrollObs.observe(el));
-    </script>
+      }, { threshold: 0.08 });
+      els.forEach(el => { el.style.opacity = '0'; el.style.transition = 'opacity 0.6s ease'; obs.observe(el); });
+    })();
+  </script>
 </body>
 
 </html>
